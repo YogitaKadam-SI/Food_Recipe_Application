@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/my_nav"
+    app:startDestination="@id/recipiesFragment">
+
+    <fragment
+        android:id="@+id/recipiesFragment"
+        android:name="com.example.foodrecipe.ui.fragments.recipe.RecipiesFragment"
+        android:color="@color/white"
+        android:label="Recipies"
+        tools:layout="@layout/fragment_recipies" >
+        <action
+            android:id="@+id/action_recipiesFragment_to_recipesBottomSheet"
+            app:destination="@id/recipesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <action
+            android:id="@+id/action_recipiesFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/foodJokeFragment"
+        android:name="com.example.foodrecipe.ui.fragments.foodjoke.FoodJokeFragment"
+        android:label="Joke"
+        android:color="#FFFF00"
+        tools:layout="@layout/fragment_food_joke" />
+    <fragment
+        android:id="@+id/favoriteRecepiesFragment"
+        android:name="com.example.foodrecipe.ui.fragments.favorites.FavoriteRecepiesFragment"
+        android:label="Favorite Recepies"
+        android:color="#FFFF00"
+        tools:layout="@layout/fragment_favorite_recepies" >
+        <action
+            android:id="@+id/action_favoriteRecepiesFragment_to_detailsActivity"
+            app:destination="@id/detailsActivity" />
+    </fragment>
+    <dialog
+        android:id= "@+id/recipesBottomSheet"
+        android:name="com.example.foodrecipe.ui.fragments.recipe.bottomsheet.RecipesBottomSheet"
+        android:label="recipes_bottom_sheet"
+        tools:layout="@layout/recipes_bottom_sheet" >
+        <action
+            android:id="@+id/action_recipesBottomSheet_to_recipiesFragment"
+            app:destination="@id/recipiesFragment" />
+    </dialog>
+    <activity
+        android:id="@+id/detailsActivity"
+        android:name="com.example.foodrecipe.ui.DetailsActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_details" >
+        <argument
+            android:name="result"
+            app:argType="com.example.foodrecipe.models.Result" />
+    </activity>
+</navigation>
